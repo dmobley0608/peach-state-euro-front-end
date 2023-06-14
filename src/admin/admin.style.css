@@ -1,0 +1,20 @@
+.admin{
+    background-color: #fff;
+    background-image: none;
+    color:black;
+    text-shadow: none;
+}
+
+.admin-nav-link{
+    color: black;
+}
+
+.delete-btn{
+    background-color: red;
+}
+
+.form-bg{    
+    color:rgb(148, 147, 147);
+    box-shadow: 1px 1px 5px black;
+    border-radius: .5em;
+}
