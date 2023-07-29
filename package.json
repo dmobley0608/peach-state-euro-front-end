@@ -28,9 +28,7 @@
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "postinstall": "npm run webpack",
-    "webpack": "webpack",
+  "scripts": {   
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
