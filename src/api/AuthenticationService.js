@@ -6,6 +6,7 @@ export const apiClient = axios.create(
     }
 );
 
-export const executeJwtAuthentication = (username, password)=>apiClient.post("authenticate", {username, password})
+export const verifyUser = ()=>apiClient.get("verify-user")
+
 
  

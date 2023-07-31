@@ -19,16 +19,19 @@ import AdminHome from './admin/pages/home';
 
 
 
+
 function App() {
   const [images, setImages] = useState(null);
   const [show, setShow] = useState(false);  
 
-  function AuthenticatedRoute({ children }) {
+
+ function AuthenticatedRoute({ children }) {
     const auth = useAuth();
-    if (auth.isAuthenticated) {
+    auth.login()    
+    if (auth.isAdmin) {
       return children;
     } else {
-      return <LoginPage message={"Sign in to view this page."}/>
+      return <LoginPage message={"Sign in with an admin account to view this page."}/>
     }
   }
 
@@ -38,7 +41,7 @@ function App() {
         setImages(res.data.resources)
 
       })
-
+      
   }, [])
 
   return (

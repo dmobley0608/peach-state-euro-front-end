@@ -31,4 +31,4 @@ exports.Reviews = sequelize.define("Review", {
     tableName: 'reviews',
     createdAt: false,
     updatedAt: false, 
-})
+}) 

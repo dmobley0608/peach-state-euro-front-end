@@ -1,0 +1,25 @@
+@keyframes rotate {
+    from{
+       transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.google{
+    text-decoration: none;
+    color:black;
+    font-size: 1.5em;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+}
+.google img{
+    max-width: 50px;
+}
+
+.google:hover  img{
+  
+    animation: rotate 1 linear 1s;
+}

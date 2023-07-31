@@ -17,4 +17,4 @@ export const deleteItem=(id)=>apiClient.delete(`/items/delete/${id}`)
 //----------------> Reviews <--------------------------------
 export const getReviews=()=>apiClient.get("reviews/")
 export const addReview=(review)=>apiClient.post("reviews/add", review)
-export const deleteReview=(id)=>apiClient.delete(`admin/reviews/delete/${id}`)
+export const deleteReview=(id)=>apiClient.delete(`reviews/${id}`)

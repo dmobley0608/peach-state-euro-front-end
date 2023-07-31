@@ -9,7 +9,7 @@ export default function MiniNavbar() {
 
     const signOut=()=>{
         auth.logout()
-        nav("/")
+       
     }
     return (
         <div className="d-flex row bg-dark text-light mb-0" >
@@ -27,8 +27,8 @@ export default function MiniNavbar() {
                     </h6>
                 </div>
                 <ul className='nav ms-auto'>
-                   <li>{auth.isAuthenticated && <Link className='btn btn-secondary me-2 ' to="/admin/items">Dashboard</Link>}</li> 
-                   <li>{auth.isAuthenticated && <button className='btn btn-secondary  me-5' onClick={signOut}>Logout</button>}</li> 
+                   <li>{auth.isAdmin && <Link className='btn btn-secondary me-2 ' to="/admin/items">Dashboard</Link>}</li> 
+                   <li>{auth.isAdmin && <a href="/api/logout" className='btn btn-secondary  me-5' onClick={signOut}>Logout</a>}</li> 
                 </ul>
 
             </div>

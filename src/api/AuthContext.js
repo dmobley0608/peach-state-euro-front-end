@@ -1,31 +1,27 @@
 import { useState, createContext, useContext } from "react";
-import { apiClient, executeJwtAuthentication } from "./AuthenticationService";
+import { verifyUser } from "./AuthenticationService";
+
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export default function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false)
   const [username, setUsername] = useState(null);
-  const [token, setToken] = useState();
+  
 
-  async function login(username, password) {
+  async function login() {
     try {
-      const response = await executeJwtAuthentication(username, password);
-      if (response.status === 200) {
-        const jwtToken = `Bearer ${response.data.token}`;
-        setToken(jwtToken);
+      const response = await verifyUser();
+      if (response.status === 200 && response.data.role === "admin") {       
+        setIsAuthenticated(true)   
+        setIsAdmin(true)     
+        return true;      
+      } else if(response.status === 200){
         setIsAuthenticated(true)
-        setUsername(username)
-
-        apiClient.interceptors.request.use(
-            (config) => {               
-                config.headers.Authorization = jwtToken
-                return config
-            }
-        )
-        return true;
-      } else {
+        return true; 
+      }else {
         logout();
         return false;
       }
@@ -36,11 +32,11 @@ export default function AuthProvider({ children }) {
   }
   function logout() {
     setIsAuthenticated(false);
-    setUsername(null)
+    setUsername(null)    
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, username }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, username, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

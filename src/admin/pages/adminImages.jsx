@@ -43,7 +43,7 @@ export default function AdminImages(){
                     </tr>
                 </thead>
                 <tbody>
-                    {images.map(image=>(
+                    {images && images.map(image=>(
                         <tr key={image.public_id} className="align-bottom">
                             
                             <td><img src={image.secure_url} alt="" width="100px"/></td>                            

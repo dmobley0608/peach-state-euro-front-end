@@ -20,3 +20,15 @@ exports.addReview = async(req, res)=>{
         res.status(500).json(err.message)
     }
 }
+
+exports.deleteReview = async(req, res)=>{
+   
+    if(req.user.role === 'admin'){
+        const {id} = req.params
+        console.log(id)
+        Reviews.destroy({where:{id:id}}) 
+        res.status(200).json("Review Deleted Successfully")
+    }else{
+        res.status(403).json("You do not have permission to perform this action")
+    }
+}
