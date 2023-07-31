@@ -2,7 +2,7 @@ import StarRating from "./starRating";
 
 
 export default function ReviewCard({review}){
-    const date = new Date(review.date);
+    const date = new Date(review.date);    
     let year = date.getFullYear()
     let month = date.toLocaleString('default', {month: 'long'});
     let day = date.getDate();

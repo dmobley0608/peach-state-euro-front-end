@@ -9,10 +9,10 @@ export const deleteImage=(filename)=>apiClient.post(`admin/images/delete/${filen
 export const getRecentMounts=()=>apiClient.get('recent-mounts/')
 export const updateRecentMount=(mount)=>apiClient.put(`admin/recent-mount/update`, mount)
 //-----------------> Catalog <------------------------------
-export const getCatalogItems=()=>apiClient.get("catalog/")
-export const updateItem=(item)=>apiClient.put("admin/item/update", item)
-export const addItem=(item)=>apiClient.post("admin/item/add", item)
-export const deleteItem=(id)=>apiClient.delete(`admin/item/delete/${id}`)
+export const getCatalogItems=()=>apiClient.get("items/")
+export const updateItem=(item)=>apiClient.put("items/update", item)
+export const addItem=(item)=>apiClient.post("items/add", item)
+export const deleteItem=(id)=>apiClient.delete(`/items/delete/${id}`)
 
 //----------------> Reviews <--------------------------------
 export const getReviews=()=>apiClient.get("reviews/")
