@@ -22,7 +22,7 @@ export default function ItemForm({ item, refreshItemList, setShow }) {
 
     const handleSubmit = async (values) => {
         if(item){
-            await updateItem(values)
+            await updateItem(item.id,values)
             .then(res=>alert("Update Successful"))
             .catch(err=> alert(err));            
         }else{
@@ -52,7 +52,7 @@ export default function ItemForm({ item, refreshItemList, setShow }) {
                             </div>
                             <div className="col-lg-4">
                             <label>Image Url:</label>
-                                <Field as="textarea" name="imageURL" className="form-control" />
+                                <Field as="textarea" name="imageurl" className="form-control" />
                             </div>
                             <div className="col-lg-3">
                             <label>Price:</label>

@@ -21,8 +21,7 @@ exports.addReview = async(req, res)=>{
     }
 }
 
-exports.deleteReview = async(req, res)=>{
-   
+exports.deleteReview = async(req, res)=>{   
     if(req.user.role === 'admin'){
         const {id} = req.params
         console.log(id)

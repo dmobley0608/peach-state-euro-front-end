@@ -3,7 +3,7 @@ const { sequelize } = require("../utils/sequelize")
 
 exports.Items = sequelize.define("Items", {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement: true
     },
@@ -23,4 +23,5 @@ exports.Items = sequelize.define("Items", {
     tableName: 'items',
     createdAt: false,
     updatedAt: false, 
+    
 })

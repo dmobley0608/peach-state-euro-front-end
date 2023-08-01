@@ -10,7 +10,7 @@ export const getRecentMounts=()=>apiClient.get('recent-mounts/')
 export const updateRecentMount=(mount)=>apiClient.put(`admin/recent-mount/update`, mount)
 //-----------------> Catalog <------------------------------
 export const getCatalogItems=()=>apiClient.get("items/")
-export const updateItem=(item)=>apiClient.put("items/update", item)
+export const updateItem=(id,item)=>apiClient.put(`items/update/${id}`, item)
 export const addItem=(item)=>apiClient.post("items/add", item)
 export const deleteItem=(id)=>apiClient.delete(`/items/delete/${id}`)
 
