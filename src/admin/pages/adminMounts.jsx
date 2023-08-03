@@ -20,7 +20,7 @@ export default function RecentMounts() {
     const refreshImages=async()=>{
         setShow(true)
         await getImages()
-        .then(res=>setImages(res.data.resources))
+        .then(res=>setImages(res.data))
         setShow(false)
     }
 
@@ -47,8 +47,8 @@ export default function RecentMounts() {
                             <div className="col-lg-5">
                                 <Field as="select" name="url" className="form-control" >
                                     {images && images.map(image=>(
-                                        <option value={image.secure_url}>
-                                            {image.public_id}                                            
+                                        <option value={image.url}>
+                                           {image.url}                                    
                                         </option>
                                     ))}
                                 </Field>

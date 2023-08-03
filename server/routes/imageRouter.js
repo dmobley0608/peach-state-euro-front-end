@@ -18,6 +18,6 @@ const router = express.Router()
 
 router.get("/", getAllImages)
 router.post("/", authorizationCheck, upload.array('media'), uploadImages)
-router.post("/:fileId", authorizationCheck,  deleteImage)
+router.delete("/:fileId", authorizationCheck,  deleteImage)
 
 module.exports = router

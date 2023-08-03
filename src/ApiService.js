@@ -4,11 +4,11 @@ const headers = {'Content-Type': 'multipart/form-data'}
 
 //-----------------> Images <-------------------------------
 export const getImages=()=> apiClient.get('images/')
-export const deleteImage=(filename)=>apiClient.post(`images/${filename}`)
+export const deleteImage=(filename)=>apiClient.delete(`images/${filename}`)
 export const addImage=(image)=>apiClient.post('images/', image, headers)
 //----------------->Recent Mounts<---------------------------
 export const getRecentMounts=()=>apiClient.get('recent-mounts/')
-export const updateRecentMount=(mount)=>apiClient.put(`recent-mount/update`, mount)
+export const updateRecentMount=(mount)=>apiClient.put(`recent-mounts/update`, mount)
 //-----------------> Catalog <------------------------------
 export const getCatalogItems=()=>apiClient.get("items/")
 export const updateItem=(id,item)=>apiClient.put(`items/update/${id}`, item)
