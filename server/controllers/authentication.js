@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oidc')
 const { User } = require("../model/user")
 
 
+
 passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -15,8 +16,7 @@ passport.use(new GoogleStrategy({
         
         if(!user){
            user= await User.create({id:profile.id, username: profile.displayName, role:'user', email: profile.emails[0].value})        
-        }
-        console.log(profile)
+        }       
         return cb(null, user)
     }
     ))
@@ -30,5 +30,7 @@ passport.use(new GoogleStrategy({
             cb(null, {first_name: user.first_name, role: user.role})  
         })
     })
+
+  
 
 module.exports = passport

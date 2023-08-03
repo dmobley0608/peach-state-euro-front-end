@@ -1,38 +1,46 @@
 import { useEffect, useState } from "react";
 import { deleteImage, getImages } from "../../ApiService";
-import CloudinaryUploadWidget from "../components/imageUploadWidget";
 import LoadingScreen from "../components/loading/loading";
+import ImageUploadWidget from "../components/imageUploadWidget";
 
 
 
 export default function AdminImages(){
     const [images, setImages] = useState([]);
     const [show, setShow]= useState(false)
+
     const refreshImages = async()=>{
         setShow(true)
+        setImages([])
         await getImages()
-        .then(res=>setImages(res.data.resources))       
-       setShow(false)
+        .then(res=>setImages([...res.data]))       
+        setShow(false)
     }
 
     const handleDelete=async(filename)=>{
        let choice = window.confirm("Are you sure? This can not be undone!")
        if(choice){
         setShow(true)
+        try{
         await deleteImage(filename)
-        await refreshImages()
-        setShow(false)
-        
+        refreshImages()
+        }catch(err){}
+        setShow(false)        
        }
     }
 
     useEffect(()=>{
-        refreshImages()
+        if(images.length < 1){
+            refreshImages()
+        }       
     },[])
+
+   
+    
     return(
         <div className="container-fluid">
             <div>
-            <CloudinaryUploadWidget refreshImages={refreshImages}/>
+            <ImageUploadWidget refreshImages={refreshImages}/>
             </div>
             <table className="table table-lg  table-striped text-start">
                 <thead>
@@ -44,11 +52,10 @@ export default function AdminImages(){
                 </thead>
                 <tbody>
                     {images && images.map(image=>(
-                        <tr key={image.public_id} className="align-bottom">
-                            
-                            <td><img src={image.secure_url} alt="" width="100px"/></td>                            
-                            <td>{image.secure_url}</td>
-                            <td><button className="btn btn-close delete-btn" title="Delete" onClick={()=>handleDelete(image.filename)}></button></td>
+                        <tr key={image.public_id} className="align-bottom">                            
+                            <td><img src={image.thumbnail} alt="" width="100px"/></td>                            
+                            <td>{image.url}</td>
+                            <td><button className="btn btn-close delete-btn" title="Delete" onClick={()=>handleDelete(image.fileId)}></button></td>
                                                        
                         </tr>
                     ))}

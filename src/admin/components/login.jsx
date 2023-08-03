@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../api/AuthContext";
 import googleImg from "../../images/google-logo-9822.png"
 import "./styles.css"
+
 export default function LoginPage({message}) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();

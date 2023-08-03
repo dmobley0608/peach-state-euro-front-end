@@ -1,45 +1,32 @@
-import { CloudinaryContext, Image, Transformation } from 'cloudinary-react'
 import { useEffect } from 'react'
 import { getImages } from '../ApiService'
-
+import "./styles.css"
 
 export default function GalleryPage({ images, setImages }) {
-    let time = 0;
+   
     useEffect(() => {
         if (images == null) {
             getImages()
-                .then(res => setImages(res.data.resources))
+                .then(res => setImages(res.data))
         }
     })
     return (
-        <div className='fill' >            
-            <CloudinaryContext cloudName="dmobley0608" className="row">
-                <div className='container row mt-4'>
-                    {images ? images.map(image => {
-                         time += .5
+        <div className='gallery' >            
+            
+                <div className='row mt-4'>
+                    {images ? images.map(image => {                        
                         return(
-                        <div className={` col-lg-4 col-md-6 mb-3 animate__animated animate__backInRight animate__delay-${time}s`} key={image.public_id}>
-                            <div className="overflow-hidden">
-                                <a target="_blank" rel="noreferrer" href={image.secure_url}>
-                                    <Image  publicId={image.public_id} className={`rounded border border-dark border-2 `}>
-                                        <Transformation
-                                            crop="scale"
-                                            width="auto"
-                                            height="400"
-                                            dpr="auto"
-                                            responsive_placeholder="blank"
-                                        />
-                                    </Image>
-                                </a>
-                            </div>
+                        <div className='image-container'>                            
+                                <a target="_blank" rel="noreferrer" href={image.url}>
+                                    <img src={image.url} alt="..."/>
+                                </a>                           
                         </div>
                         )
                     }) : <div className='mx-auto'>Loading</div>}
-
                 </div>
 
 
-            </CloudinaryContext>
+           
         </div>
 
     )

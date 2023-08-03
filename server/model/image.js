@@ -2,15 +2,14 @@ const { DataTypes } = require("sequelize")
 const { sequelize } = require("../utils/sequelize")
 
 exports.Images = sequelize.define("Images", {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    public_id: {
-        type: DataTypes.STRING
+    fileId: {
+        type: DataTypes.STRING,
+        primaryKey: true,        
     },
     url: {
+        type: DataTypes.STRING
+    },
+   thumbnail: {
         type: DataTypes.STRING
     }
    

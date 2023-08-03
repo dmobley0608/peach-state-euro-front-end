@@ -4,8 +4,7 @@ const path = require('path');
 const session = require('express-session')
 const { sequelizeSync } = require('./utils/sequelize');
 const passport = require('./controllers/authentication');
-const GoogleStrategy = require('passport-google-oidc')
-const { User } = require("./model/user")
+const multer = require('multer')
 
 const itemsRouter = require("./routes/itemsRouter")
 const reviewsRouter = require("./routes/reviewRouter")
@@ -23,7 +22,8 @@ app.use(express.static("public"));
 //Body Parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
+//Multer
+const upload = multer();
 //Sequelize
 sequelizeSync();
 
@@ -47,9 +47,9 @@ app.use(passport.authenticate('session'));
 
 
 //Routes
-app.use("/api/items", itemsRouter)
-app.use("/api/reviews", reviewsRouter)
-app.use("/api/recent-mounts", recentMountRouter)
+app.use("/api/items",upload.none(), itemsRouter)
+app.use("/api/reviews", upload.none(),reviewsRouter)
+app.use("/api/recent-mounts",upload.none(), recentMountRouter)
 app.use("/api/images", imagesRouter) 
 
 //test routes

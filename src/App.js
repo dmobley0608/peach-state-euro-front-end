@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import Homepage from './homepage/homepage';
 
 import MiniNavbar from './components/mini-nav';
@@ -35,14 +35,7 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    getImages()
-      .then(res => {
-        setImages(res.data.resources)
-
-      })
-      
-  }, [])
+  
 
   return (
     <div className="App peach">

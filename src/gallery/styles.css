@@ -1,0 +1,25 @@
+.gallery{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery .row{
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1144px;
+    margin:0 auto;
+}
+
+.gallery .image-container{
+    max-width:350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.image-container img{
+    max-width: 100%;
+}
