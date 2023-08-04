@@ -9,7 +9,7 @@ import { Modal } from "react-bootstrap"
 export default function AdminItemsPage() {
     const [items, setItems] = useState([])
     const [show, setShow] = useState(false);
-
+    
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 

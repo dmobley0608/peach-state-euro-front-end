@@ -2,6 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { getImages, getRecentMounts, updateRecentMount } from "../../ApiService";
 import LoadingScreen from "../components/loading/loading";
+import ImageDropdown from "../components/image-drop-down/imageDropdown";
 
 
 
@@ -11,7 +12,8 @@ export default function RecentMounts() {
     const [recentMounts, setRecentMounts] = useState([]);
     const [images, setImages] = useState([])
     const [show, setShow] = useState(false)
-
+    
+    
     const refreshMounts = async () => {
         await getRecentMounts()
             .then(res => {setRecentMounts(res.data)})        
@@ -20,13 +22,14 @@ export default function RecentMounts() {
     const refreshImages=async()=>{
         setShow(true)
         await getImages()
-        .then(res=>setImages(res.data))
+        .then(res=>{setImages(res.data)})
         setShow(false)
     }
 
-    const handleSubmit=async(values)=>{
-       await updateRecentMount(values);
-       refreshMounts()
+    const handleSubmit=async(values)=>{      
+       await updateRecentMount(values)
+       await refreshMounts()
+       
     }
 
     useEffect(() => {
@@ -45,18 +48,8 @@ export default function RecentMounts() {
                             </div>
 
                             <div className="col-lg-5">
-                                <Field as="select" name="url" className="form-control" >
-                                    {images && images.map(image=>(
-                                        <option value={image.url}>
-                                           {image.url}                                    
-                                        </option>
-                                    ))}
-                                </Field>
-                            </div>
-
-                            <div className="col-lg-3">
-                                <button type="submit" className="btn btn-success">Update</button>
-                            </div>
+                                <ImageDropdown mount={mount} images={images} handleSubmit={handleSubmit}/>
+                            </div>                           
                         </Form>
 
                     )}

@@ -1,0 +1,32 @@
+.image-dropdown{
+  cursor: pointer;
+}
+
+.images-container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    height: 300px;
+    overflow-y:scroll ;
+    z-index: 5;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px black;
+}
+
+.image-dropdown img{
+    width:100px;
+}
+
+.image-dropdown img:hover{
+    cursor: pointer;
+}
+.selected-image{
+    width:100px;
+}
+
+.selected-image::before{
+    content: "Selected Image";   
+    font-size: 15px;
+    font-weight: bold;
+}

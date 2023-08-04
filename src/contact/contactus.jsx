@@ -7,7 +7,7 @@ export const ContactUs = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_h7nx41c', 'peach_state_contact', form.current, 'user_RMkv4Xk720JMhtey0EJvM')
+        emailjs.sendForm('service_c0vr88c', 'template_ahco5ib', form.current, '3IoQmLPTnt2HzIxpe')
             .then((result) => {
                 alert("Your email has been sent.")               
             }, (error) => {

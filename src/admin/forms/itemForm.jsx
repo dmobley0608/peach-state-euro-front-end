@@ -1,15 +1,17 @@
 import { Field, Form, Formik } from "formik";
 import { addItem, deleteItem, updateItem } from "../../ApiService";
-
+import ImageDropdown from "../components/image-drop-down/imageDropdown"
+import { useState } from "react";
 
 export default function ItemForm({ item, refreshItemList, setShow }) {
+    const [image, setImage] = useState()
     const initialValues ={
         name:"",
         description:"",
         imageURL:"",
         price:""
     }
-
+   
     const handleDelete=async()=>{
         let choice = window.confirm("Are you sure you want to delete this Item. This can not be undone?")
         if(choice){
@@ -18,10 +20,12 @@ export default function ItemForm({ item, refreshItemList, setShow }) {
             alert("Item has been deleted")          
         }
         refreshItemList();
+
     }
 
     const handleSubmit = async (values) => {
         if(item){
+            values.imageurl = image.url
             await updateItem(item.id,values)
             .then(res=>alert("Update Successful"))
             .catch(err=> alert(err));            
@@ -30,7 +34,8 @@ export default function ItemForm({ item, refreshItemList, setShow }) {
             .catch(err=> alert(err))            
             setShow(false)           
         }
-        refreshItemList();       
+        refreshItemList();      
+        setImage(null) 
     }
 
     return (
@@ -51,8 +56,16 @@ export default function ItemForm({ item, refreshItemList, setShow }) {
                                 <Field as="textarea" name="description" className="form-control" />
                             </div>
                             <div className="col-lg-4">
-                            <label>Image Url:</label>
-                                <Field as="textarea" name="imageurl" className="form-control" />
+                                <div>
+                                    <h6>Current Image</h6>
+                                    <img className="item-image" src={item.imageurl} alt="" />
+                                </div>
+                                {image && <div>
+                                    <h6>Selected Image</h6>
+                                    <img className="item-image" src={image.url} alt="" />
+                                </div>}
+                            <label>Image:</label>
+                                <ImageDropdown mount={image} handleAction={setImage} />
                             </div>
                             <div className="col-lg-3">
                             <label>Price:</label>
