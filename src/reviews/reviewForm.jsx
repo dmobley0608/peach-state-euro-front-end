@@ -40,7 +40,7 @@ export default function ReviewForm({ refreshReviews, setShow, review }) {
         <Formik initialValues={review ? review : initialValues} onSubmit={onSubmit}>
             {(props) => (
                 <Form className={review? "border row mb-2 container form-bg p-2":"row"}>
-                    <div className="mb-3 col-lg-8">
+                    <div className="mb-3 col-lg-9">
                         <StarRatingForm setRating={setRating} />
                     </div>
                     {review && <div className="ms-auto  col-lg-2 ">

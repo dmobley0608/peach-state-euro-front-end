@@ -14,7 +14,7 @@ export default function ContactModal({setShow, show}){
             <Modal.Title>Have A Question?</Modal.Title>
         </Modal.Header>
         <Modal.Body >
-            <ContactUs/>
+            <ContactUs setShow={setShow}/>
         </Modal.Body>
     </Modal>
     )

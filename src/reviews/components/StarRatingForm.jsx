@@ -16,7 +16,7 @@ function getLabelText(value) {
 }
 
 export default function HoverRating({setRating}) {
-  const [value, setValue] = React.useState(5);
+  const [value, setValue] = React.useState(null);
   const [hover, setHover] = React.useState(-1);
 
   return (

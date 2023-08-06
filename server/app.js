@@ -10,6 +10,7 @@ const itemsRouter = require("./routes/itemsRouter")
 const reviewsRouter = require("./routes/reviewRouter")
 const imagesRouter = require("./routes/imageRouter")
 const recentMountRouter = require("./routes/recentMountRouter");
+const emailRouter = require("./routes/emailRoutes")
 const { Session } = require('./model/session');
 
 
@@ -51,6 +52,7 @@ app.use("/api/items",upload.none(), itemsRouter)
 app.use("/api/reviews", upload.none(),reviewsRouter)
 app.use("/api/recent-mounts",upload.none(), recentMountRouter)
 app.use("/api/images", imagesRouter) 
+app.use("/api/email", emailRouter)
 
 //test routes
 app.get('/login/federated/google', passport.authenticate('google'))
