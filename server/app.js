@@ -58,8 +58,7 @@ app.use(session({
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    proxy: true, // Crucial
+    saveUninitialized: false,   
     cookie: {
         maxAge: 1800000,//30mins
         secure:false, // Crucial
