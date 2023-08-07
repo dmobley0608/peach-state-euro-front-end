@@ -62,7 +62,7 @@ app.use(session({
     proxy: true, // Crucial
     cookie: {
         maxAge: 1800000,//30mins
-        secure:process.env.NODE_ENV === 'production', // Crucial
+        secure:false, // Crucial
         httpOnly: true
     }
 
