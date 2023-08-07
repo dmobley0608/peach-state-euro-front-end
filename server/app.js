@@ -37,7 +37,7 @@ app.use(helmet({
                 ],
             scriptSrc: ["self", "localhost:9000", 'peachstateeuro.com', 'trusted.cdn.com', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'],
             manifestSrc: ['self', 'http://localhost:9000', "peachstateeuro.com"],
-            connectSrc: ['localhost:9000'],
+            connectSrc: ['localhost:9000', 'peachstateeuro.com'],
             imgSrc: ['self', 'localhost:9000', 'ik.imagekit.io', "peachstateeuro.com", 'http://www.w3.org/2000/svg']
         }
     }
@@ -56,12 +56,13 @@ app.use(session({
         conString: process.env.DB_CONNECTION_STRING,
         tableName: 'session'
     }),
+    proxy:true,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,   
     cookie: {
         maxAge: 1800000,//30mins
-        secure:false, // Crucial
+        secure:process.env.NODE_ENV === 'production', // Crucial
         httpOnly: true
     }
 
