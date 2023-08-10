@@ -23,25 +23,25 @@ app.use(express.static("public"));
 
 //Helmet
 
-app.use(helmet({
-    contentSecurityPolicy: {
-        directives: {
-            "default-src": ["peachstateeuro.com", 'localhost', 'google.com','googleapis.com'],
-            styleSrc: [
-                "self",                
-                 'localhost:9000',
-                  'peachstateeuro.com',                  
-                    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css',
-                    'trusted.cdn.com',
-                    "'unsafe-inline'"
-                ],
-            scriptSrc: ["self", "localhost:9000", 'peachstateeuro.com', 'trusted.cdn.com', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'],
-            manifestSrc: ['self', 'http://localhost:9000', "peachstateeuro.com"],
-            connectSrc: ['localhost:9000', 'peachstateeuro.com'],
-            imgSrc: ['self', 'localhost:9000', 'ik.imagekit.io', "peachstateeuro.com", 'http://www.w3.org/2000/svg']
-        }
-    }
-}))
+// app.use(helmet({
+//     contentSecurityPolicy: {
+//         directives: {
+//             "default-src": ["peachstateeuro.com", 'localhost', 'google.com','googleapis.com'],
+//             styleSrc: [
+//                 "self",                
+//                  'localhost:9000',
+//                   'peachstateeuro.com',                  
+//                     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css',
+//                     'trusted.cdn.com',
+//                     "'unsafe-inline'"
+//                 ],
+//             scriptSrc: ["self", "localhost:9000", 'peachstateeuro.com', 'trusted.cdn.com', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'],
+//             manifestSrc: ['self', 'http://localhost:9000', "peachstateeuro.com"],
+//             connectSrc: ['localhost:9000', 'peachstateeuro.com'],
+//             imgSrc: ['self', 'localhost:9000', 'ik.imagekit.io', "peachstateeuro.com", 'http://www.w3.org/2000/svg']
+//         }
+//     }
+// }))
 //Body Parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
