@@ -26,7 +26,7 @@ app.use(express.static("public"));
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
-            "default-src": ["peachstateeuro.com", 'localhost', 'google.com'],
+            "default-src": ["peachstateeuro.com", 'localhost', 'google.com','googleapis.com'],
             styleSrc: [
                 "self",                
                  'localhost:9000',
