@@ -42,6 +42,7 @@ app.use(express.static("public"));
 //         }
 //     }
 // }))
+
 //Body Parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -51,7 +52,6 @@ const upload = multer();
 sequelizeSync();
 
 //Sessions
-app.set('trust proxy', 1)
 app.use(session({
     store: new (require('connect-pg-simple')(session))({
         conString: process.env.DB_CONNECTION_STRING,
@@ -61,6 +61,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,   
+    sameSite:"none",
     cookie: {
         maxAge: 1800000,//30mins
         secure:process.env.NODE_ENV === 'production', // Crucial
