@@ -56,8 +56,7 @@ app.use(session({
     store: new (require('connect-pg-simple')(session))({
         conString: process.env.DB_CONNECTION_STRING,
         tableName: 'session'
-    }),
-    proxy:true,
+    }),  
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,   
