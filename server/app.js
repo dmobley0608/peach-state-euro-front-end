@@ -51,6 +51,7 @@ const upload = multer();
 sequelizeSync();
 
 //Sessions
+app.set('trust proxy', 1)
 app.use(session({
     store: new (require('connect-pg-simple')(session))({
         conString: process.env.DB_CONNECTION_STRING,
